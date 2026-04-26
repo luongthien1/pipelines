@@ -1,0 +1,296 @@
+@import "tailwindcss";
+
+:root {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  color-scheme: light;
+  background-color: #f8faf8;
+  color: #111827;
+  --bg: #f8faf8;
+  --surface: #ffffff;
+  --border: #e2ece5;
+  --text: #111827;
+  --muted: #6b7280;
+  --green: #16a34a;
+  --green-dark: #14532d;
+  --green-pale: #dcfce7;
+  --green-light: #86efac;
+  --accent: #0d9488;
+  --accent-pale: #f0fdfa;
+  --amber: #d97706;
+  --amber-pale: #fef3c7;
+  --blue: #2563eb;
+  --blue-pale: #eff6ff;
+  --purple: #7c3aed;
+  --purple-pale: #f5f3ff;
+  --red: #dc2626;
+  --red-pale: #fef2f2;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 14px;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.page-shell {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.page-header {
+  background: linear-gradient(135deg, var(--blue), #1e40af);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  color: #fff;
+  margin-bottom: 1.75rem;
+}
+
+.page-header .label {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--blue-pale);
+  margin-bottom: .45rem;
+}
+
+.page-header h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: .35rem;
+  letter-spacing: -.02em;
+}
+
+.page-header p.sub {
+  font-size: .82rem;
+  opacity: .88;
+  max-width: 620px;
+  line-height: 1.55;
+}
+
+.section-title {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .75rem;
+  padding-bottom: .35rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.card-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 1.25rem;
+  box-shadow: 0 18px 36px rgba(15, 23, 43, 0.06);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.card-grid-wide {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .card-grid-wide {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .card-grid-wide {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1500px) {
+  .card-grid-wide {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.compact-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1.75rem;
+  padding: 1rem;
+  box-shadow: 0 14px 28px rgba(15, 23, 43, 0.06);
+}
+
+.compact-card h3,
+.compact-card .mod-title {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.compact-card p,
+.compact-card li {
+  font-size: .78rem;
+}
+
+@media (max-width: 720px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .2rem .6rem;
+  border-radius: 999px;
+  font-size: .7rem;
+  font-weight: 700;
+  margin-right: .35rem;
+}
+
+.tag-green { background: var(--green-pale); color: #166534; }
+.tag-accent { background: var(--accent-pale); color: #0f766e; }
+.tag-amber { background: var(--amber-pale); color: #92400e; }
+.tag-blue { background: var(--blue-pale); color: #1e40af; }
+.tag-purple { background: var(--purple-pale); color: #5b21b6; }
+.tag-red { background: var(--red-pale); color: #991b1b; }
+
+.panel-note {
+  border-radius: 12px;
+  padding: .85rem 1rem;
+  font-size: .82rem;
+  line-height: 1.5;
+  background: var(--green-pale);
+  border: 1px solid var(--green-light);
+  color: #166534;
+}
+
+.card-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+  padding: .7rem 1rem;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: .75rem;
+  font-weight: 700;
+}
+
+.card-action:hover {
+  border-color: var(--green-dark);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 43, 0.15);
+  border-radius: 999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 23, 43, 0.24);
+}
+
+.animate-in {
+  animation: fadeIn 0.45s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.no-scrollbar {
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE/Edge */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;                /* Chrome/Safari/Opera */
+}
+
+/* ── Range slider styling ─────────────────────────────────────────────────── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    to right,
+    var(--green) 0%,
+    var(--green) var(--range-pct, 30%),
+    #e5e7eb var(--range-pct, 30%),
+    #e5e7eb 100%
+  );
+  outline: none;
+  cursor: pointer;
+  border: 1px solid #d1d5db;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--green);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 4px rgba(34,197,94,0.15);
+  transform: scale(1.1);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--green);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  cursor: pointer;
+}
+
+/* Dark background variant (used in LabelingCanvas / SettingsPanel) */
+input[type="range"].range-dark {
+  background: linear-gradient(
+    to right,
+    var(--green) 0%,
+    var(--green) var(--range-pct, 30%),
+    rgba(255,255,255,0.15) var(--range-pct, 30%),
+    rgba(255,255,255,0.15) 100%
+  );
+  border-color: rgba(255,255,255,0.2);
+}
+
+input[type="range"].range-dark::-webkit-slider-thumb {
+  background: white;
+  border-color: var(--green);
+}

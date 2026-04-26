@@ -208,3 +208,8 @@ __marimo__/
 
 # node
 node_modules
+
+# data
+backend/uploads/
+.vscode
+app.db

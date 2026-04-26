@@ -1,35 +1,26 @@
-import psycopg
-from core.config import settings
-from psycopg import Connection
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-DB_HOST = settings.DB_HOST
-DB_PORT = settings.DB_PORT
-DB_USER = settings.DB_USER
-DB_PASSWORD = settings.DB_PASSWORD
-DB_NAME = settings.DB_NAME
-DATABASE_URL = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+# Dùng SQLite cho database
+DB_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "app.db")
+DATABASE_URL = f"sqlite:///{DB_FILE}"
 
+# Để SQLite sử dụng các thread khác nhau trong FastAPI
+engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+SessionMaker = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
-def get_connection(
-    ssl: bool = False,
-    timeout: int = 5,
-) -> Connection:
+def get_connection():
     """
-    Tạo và trả về PostgreSQL connection.
-    Caller có trách nhiệm đóng connection.
+    Hàm tĩnh trả về đối tượng engine nếu cần. 
+    SessionMaker đã cover được các logic thao tác db qua ORM.
     """
-    return psycopg.connect(
-        host=DB_HOST,
-        port=DB_PORT,
-        dbname=DB_NAME,
-        user=DB_USER,
-        password=DB_PASSWORD,
-        connect_timeout=timeout,
-        sslmode="require" if ssl else "disable",
-    )
+    return engine.connect()
 
+def get_db():
+    db = SessionMaker()
+    try:
+        yield db
+    finally:
+        db.close()
 
-engine = create_engine(DATABASE_URL)
-SessionMaker = sessionmaker(bind=engine)
